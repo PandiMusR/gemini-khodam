@@ -4,13 +4,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends nginx
 
 WORKDIR /app
 
-COPY . .
+COPY . /usr/share/nginx/html
 
 RUN npm install
 
 RUN npm run build
-
-COPY /app/dist /usr/share/nginx/html
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
