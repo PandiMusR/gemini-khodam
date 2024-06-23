@@ -4,7 +4,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends nginx
 
 WORKDIR /usr/share/nginx/html
 
-COPY . /usr/share/nginx/html
+COPY . .
 
 RUN npm install
 
