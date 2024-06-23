@@ -2,7 +2,7 @@ FROM node:22.3.0-slim AS build
 
 RUN apt-get update && apt-get install -y --no-install-recommends nginx
 
-WORKDIR /app
+WORKDIR /usr/share/nginx/html
 
 COPY . /usr/share/nginx/html
 
