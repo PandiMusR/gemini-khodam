@@ -2,16 +2,18 @@ FROM node:22.3.0-slim AS build
 
 RUN apt-get update && apt-get install -y --no-install-recommends nginx
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
 
 COPY . .
 
-RUN npm install
-
 RUN npm run build
 
-RUN ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+FROM nginx:stable-alpine
+
+COPY --from=build /app/dist /usr/share/nginx/html
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 
