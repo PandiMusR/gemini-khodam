@@ -1,12 +1,7 @@
 import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
-import Base64 from 'base64-js';
 import MarkdownIt from 'markdown-it';
-import { maybeShowApiKeyBanner } from './gemini-api-banner';
 import './style.css';
 
-// 🔥 FILL THIS OUT FIRST! 🔥
-// 🔥 GET YOUR GEMINI API KEY AT 🔥
-// 🔥 https://g.co/ai/idxGetGeminiKey 🔥
 let API_KEY = 'AIzaSyAs1BKCJ_uNspy46VIgrR7x4v2CDe2dgOQ';
 
 let form = document.querySelector('form');
@@ -94,6 +89,3 @@ form.onsubmit = async (ev) => {
     output.innerHTML += '<hr>' + e;
   }
 };
-
-// You can delete this once you've filled out an API key
-maybeShowApiKeyBanner(API_KEY);ÿ
